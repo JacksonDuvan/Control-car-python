@@ -1,12 +1,15 @@
-int N1 = 5;
+//Declaramos las variables de los motores 
+int N1 = 3;
 int N2 = 6; 
 
 int N3 = 9;
-int N4 = 10;
+int N4 = 11;
 
-int val;
+int val;//Variable que recibira los datos de Python 
 void setup() {
- Serial.begin(9600);
+ Serial.begin(9600);//Iniciamos comunicacion Serial
+  
+  //Declaramos las salidas 
   pinMode(N1,OUTPUT);
   pinMode(N2,OUTPUT);
   pinMode(N3,OUTPUT);
@@ -14,43 +17,38 @@ void setup() {
 
 }
 void loop() {
-  if(Serial.available() >= 1){
-     val = Serial.read();
+  if(Serial.available() >= 1){ //Esperamos conectividad con el Bluetoth 
+     val = Serial.read();//Lee los datos 
      
-  if(val == 'a'){
+  if(val == 'a'){ //Si val es igual a 'a' entonces que se mueva hacia adelante 
     digitalWrite(N1,HIGH);
     digitalWrite(N2,LOW);
     digitalWrite(N3,LOW);
     digitalWrite(N4,HIGH);
-    Serial.println("Adelante");
     }
-  else if(val == 'i'){
+  else if(val == 'i'){ //Sino si val es igual a 'i' entonces que se mueva hacia la izquierda 
     digitalWrite(N1,HIGH);
     digitalWrite(N2,LOW);
     digitalWrite(N3,LOW);
     digitalWrite(N4,LOW);
-    Serial.println("Derecha");
     }
-  else if(val == 'd'){
+  else if(val == 'd'){ //Sino si val es igual a 'd' entonces que pare 
     digitalWrite(N1,LOW);
     digitalWrite(N2,LOW);
     digitalWrite(N3,LOW);
     digitalWrite(N4,LOW);
-    Serial.println("Stop");
     }
-  else if(val == 'r'){
+  else if(val == 'r'){ //Sino si val es igual a 'r' entonces que se mueva hacia atras 
     digitalWrite(N1,LOW);
     digitalWrite(N2,HIGH);
     digitalWrite(N3,HIGH);
     digitalWrite(N4,LOW);
-    Serial.println("Atras");
     }
-  else if(val == 's'){
+  else if(val == 's'){ //Sino si val es igual a 's' entonces que se mueva hacia la derecha 
     digitalWrite(N1,LOW);
     digitalWrite(N2,LOW);
     digitalWrite(N3,LOW);
     digitalWrite(N4,HIGH);
-    Serial.println("Izquierda");
     }
   }
 }
